@@ -10,6 +10,17 @@ function game() {
   const end = document.getElementById("end");
   const resultLog = document.querySelector(".example");
   const boundary1 = document.querySelector("#boundary1");
+
+  const node = document.createElement("div");
+  node.classList.add("block");
+  node.style.cssText = `
+  position: absolute;
+  height: 50px;
+  width: 1px;
+  top: 200px;
+  left: 500px;
+  opacity: 0;
+  `;
 }
 
 /* End of: function to be fired after the page has loaded */
