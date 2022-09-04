@@ -2,7 +2,7 @@ window.addEventListener("load", game);
 
 /* Start of: function to be fired after the page has loaded */
 function game() {
-  // Setting up variables and assigning elements
+  // Setup variables and assigne elements
   let score = 0;
   const scoreLog = document.querySelector("#status");
   const boundary = document.querySelectorAll("#game .boundary");
@@ -13,11 +13,11 @@ function game() {
   // When status is true, the game is paused until reset or restart
   let status = false;
 
-  // Centering the score and the result
+  // Center the score and the result
   scoreLog.style.textAlign = "center";
   resultLog.style.textAlign = "center";
 
-  /* Creating, styling, and adding ".block" to block the user from reaching the end target from the body path */
+  /* Create, style, and add ".block" to block the user from reaching the end target from the body path */
   const node = document.createElement("div");
   node.classList.add("block");
   boundary1.appendChild(node);
@@ -30,7 +30,7 @@ function game() {
   opacity: 0;
   `;
 
-  // Adding event listeners
+  // Add event listeners to "#start", "#end", and ".boundaries"
   start.addEventListener("mouseover", resetBoundaries);
   start.addEventListener("mouseover", resetStatus);
   start.addEventListener("click", restart);
@@ -39,7 +39,7 @@ function game() {
     boundary[i].addEventListener("mouseover", lose);
   }
 
-  // Changing borders to red, decreasing and displaying the score
+  // Change borders to red, decrease and display the score
   function lose() {
     if (!status) {
       status = true;
@@ -52,13 +52,13 @@ function game() {
       boundary[1].style.borderRight = "none";
       boundary[4].style.borderBottom = "none";
 
-      // Adding the class ".youlose" to display the result in red bg
+      // Add the class ".youlose" to display the result in red bg
       resultLog.classList.add("youlose");
       resultLog.innerText = "You lose!";
     }
   }
 
-  // Resetting boundaries
+  // Reset boundaries
   function resetBoundaries() {
     boundary.forEach((element) => {
       element.style.border = "1px solid black";
@@ -68,7 +68,7 @@ function game() {
     boundary[4].style.borderBottom = "none";
   }
 
-  // Resetting borders, increasing and displaying the score
+  // Reset borders, increase and display the score
   function win() {
     if (!status) {
       status = true;
@@ -79,11 +79,17 @@ function game() {
     }
   }
 
-  // Resetting result, status, and boundaries
+  // Reset result, status, and boundaries
   function resetStatus() {
     status = false;
     resultLog.innerText = "";
     resultLog.classList.remove("youlose");
+  }
+
+  // Reset score
+  function restart() {
+    score = 0;
+    scoreLog.innerText = score;
   }
 }
 
